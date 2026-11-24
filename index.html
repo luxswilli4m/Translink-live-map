@@ -1,0 +1,13 @@
+<!doctype html>
+<pre id="out">Testing…</pre>
+<script type="module">
+const url = "https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions";
+const out = document.getElementById("out");
+try {
+  const r = await fetch(url);
+  const buf = await r.arrayBuffer();
+  out.textContent = `CORS OK ✅\nStatus: ${r.status}\nBytes: ${buf.byteLength}`;
+} catch (e) {
+  out.textContent = `Blocked ❌\n${e}`;
+}
+</script>
